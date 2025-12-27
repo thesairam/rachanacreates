@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container inner">
-      <div class="left">© {{ year }} Rachana Creates</div>
+      <div class="left">© {{ year }} Rachana Artverse</div>
       <div class="right">Crafted with love and mehndi.</div>
     </div>
   </footer>

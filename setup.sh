@@ -119,7 +119,7 @@ run_preview() {
     npm run preview
 }
 
-echo "== Rachana Creates setup =="
+echo "== Rachana Artverse setup =="
 install_nvm_if_missing
 ensure_node
 install_dependencies

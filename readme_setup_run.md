@@ -1,4 +1,4 @@
-# Rachana Creates — Setup & Run Guide
+# Rachana Artverse — Setup & Run Guide
 
 Modern Vue 3 + Vite app with a dark green / beige-brown theme. This guide covers fresh-machine setup, development, build/preview, and optional Instagram integration.
 

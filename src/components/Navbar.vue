@@ -1,7 +1,7 @@
 <template>
   <header class="nav">
     <div class="container bar">
-      <RouterLink class="brand" to="/">Rachana Creates</RouterLink>
+      <RouterLink class="brand" to="/">Rachana Artverse</RouterLink>
       <nav class="links">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/designs">Designs</RouterLink>

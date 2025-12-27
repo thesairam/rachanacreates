@@ -3,9 +3,9 @@
     <div>
       <h1>Elegant Mehndi for Every Occasion</h1>
       <p>
-        Rachana Creates brings modern, timeless mehndi designs for weddings, festivals,
+        Rachana Artverse brings modern, timeless mehndi designs for weddings, festivals,
         baby showers, sangeet, and all special moments. Minimal to intricate — crafted
-        with care.
+        with care. Make hands Insta-Famous.
       </p>
       <div style="margin-top:16px; display:flex; gap:12px;">
         <RouterLink class="button" to="/designs">Explore Designs</RouterLink>

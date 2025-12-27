@@ -1,6 +1,6 @@
 # rarecreates
 
-# Rachana Creates — Website
+# Rachana Artverse — Website
 
 Three-page Vue site for showcasing mehndi work.
 
