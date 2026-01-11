@@ -22,6 +22,10 @@ This will:
 - Install dependencies
 - Start the Vite dev server
 
+Notes:
+- The script now auto-loads an existing `nvm` install, so you don't have to open a new shell first.
+- If Node 22 is missing, it will be installed automatically via `nvm`.
+
 Open the printed URL (e.g., http://localhost:5173).
 
 ## Setup Script Options
@@ -87,6 +91,29 @@ npm run fetch:instagram
 ```bash
 npm run dev
 ```
+
+How to get a long-lived token (Basic Display API):
+- Create a Facebook app (type: Consumer) and add the product “Instagram Basic Display”.
+- In that product’s settings, add a Valid OAuth Redirect URI you can capture (e.g., https://oauth.pstmn.io/v1/callback).
+- Add your Instagram account (@rachana.artverse) as a Tester, then accept the invite from the Instagram account (Settings → Websites/Apps → Tester Invites).
+- Authorize via: `https://api.instagram.com/oauth/authorize?client_id=APP_ID&redirect_uri=REDIRECT_URI&scope=user_profile,user_media&response_type=code` and copy the `code` from the redirect.
+- Exchange the code for a short-lived token:
+  ```bash
+  curl -X POST https://api.instagram.com/oauth/access_token \
+    -F client_id=APP_ID \
+    -F client_secret=APP_SECRET \
+    -F grant_type=authorization_code \
+    -F redirect_uri=REDIRECT_URI \
+    -F code=CODE_FROM_STEP
+  ```
+- Exchange for a long-lived token (~60 days):
+  ```bash
+  curl "https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=APP_SECRET&access_token=SHORT_LIVED_TOKEN"
+  ```
+- Put that long-lived token into `.env.local` as shown above. Refresh before it expires via:
+  ```bash
+  curl "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=LONG_LIVED_TOKEN"
+  ```
 
 Notes:
 - Token creation steps are documented in `README.md` under “Instagram Integration (Optional)”.

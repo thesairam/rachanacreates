@@ -48,23 +48,30 @@ while [[ ${1:-} ]]; do
     shift || true
 done
 
+load_nvm() {
+    export NVM_DIR="$HOME/.nvm"
+    # shellcheck source=/dev/null
+    if [ -s "$NVM_DIR/nvm.sh" ]; then
+        # nvm.sh can return non-zero if it auto-uses a missing version; ignore it here.
+        set +e
+        . "$NVM_DIR/nvm.sh"
+        set -e
+    fi
+}
+
 install_nvm_if_missing() {
+    load_nvm
     if command -v nvm >/dev/null 2>&1; then
         return
     fi
     echo "Installing nvm (Node Version Manager)..."
-    export NVM_DIR="$HOME/.nvm"
     mkdir -p "$NVM_DIR"
     curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-    # shellcheck source=/dev/null
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    load_nvm
 }
 
 ensure_node() {
-    export NVM_DIR="$HOME/.nvm"
-    # shellcheck source=/dev/null
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
+    load_nvm
     local target="${NODE_VERSION_OVERRIDE}"
     if [[ -z "$target" ]]; then
         if [[ -f .nvmrc ]]; then

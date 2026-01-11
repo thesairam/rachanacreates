@@ -17,6 +17,16 @@ Place your images in `public/media/` (e.g. `public/media/designs/`). The gallery
 
 ## Run Locally
 
+Quick start (recommended):
+
+```bash
+bash ./setup.sh --dev
+```
+
+This will auto-load your existing `nvm` install (no need to reopen the shell), install Node 22 if missing, install dependencies, and start Vite.
+
+Manual steps:
+
 ```bash
 # If you use nvm (recommended)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -50,7 +60,7 @@ npm run fetch:instagram
 - The Designs and Home pages will load from `instagram.json` when present; they fall back to placeholders otherwise.
 
 ### Get an Instagram Token (Basic Display API)
-Follow these one-time steps to generate a long‑lived token for the account that owns the content (e.g., `@rachana.createss`).
+Follow these one-time steps to generate a long‑lived token for the account that owns the content (e.g., `@rachana.artverse`).
 
 1) Create the app
 - Go to https://developers.facebook.com/ and create an app (type: "Consumer").
