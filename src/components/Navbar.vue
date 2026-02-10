@@ -12,6 +12,7 @@ const logo = '/media/logo/logow.png'
       <nav class="links">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/designs">Designs</RouterLink>
+        <RouterLink to="/pricing">Pricing</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
       </nav>
     </div>
