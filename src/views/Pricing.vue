@@ -4,7 +4,7 @@
 
     <div class="panel hero">
       <div>
-        <p class="eyebrow">Rachana Artverse</p>
+        <p class="eyebrow">Henna By Rachana</p>
         <h1>Pricing & Packages</h1>
         <p class="lede">
           Now styled to match the green studio palette. Choose a package or build your own based on coverage,

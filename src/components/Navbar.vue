@@ -6,8 +6,8 @@ const logo = '/media/logo/logow.png'
   <header class="nav">
     <div class="container bar">
       <RouterLink class="brand" to="/">
-        <img class="brand-logo" :src="logo" alt="Rachana Artverse logo" />
-        <span class="brand-text">Rachana Artverse</span>
+        <img class="brand-logo" :src="logo" alt="Henna By Rachana logo" />
+        <span class="brand-text">Henna By Rachana</span>
       </RouterLink>
       <nav class="links">
         <RouterLink to="/">Home</RouterLink>

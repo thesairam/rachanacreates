@@ -3,7 +3,7 @@
     <div>
       <h1>Elegant Mehndi for Every Occasion</h1>
       <p>
-        Rachana Artverse brings modern, timeless mehndi designs for weddings, festivals,
+        Henna By Rachana brings modern, timeless mehndi designs for weddings, festivals,
         baby showers, sangeet, and all special moments. Minimal to intricate — crafted
         with care. Make hands Insta-Famous.
       </p>

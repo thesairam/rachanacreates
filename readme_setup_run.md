@@ -1,16 +1,49 @@
-# Rachana Artverse — Setup & Run Guide
+# Henna By Rachana — Setup & Run Guide
 
-Modern Vue 3 + Vite app with a dark green / beige-brown theme. This guide covers fresh-machine setup, development, build/preview, and optional Instagram integration.
+Modern Vue 3 + Vite app with a dark green / beige-brown theme. This guide covers Docker (recommended), local development, build/preview, and optional Instagram integration.
 
 ## Prerequisites
+
+**Docker (recommended — no Node install required):**
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or Docker Engine + Compose plugin
+
+**Local development (alternative):**
 - Node.js: 22.x recommended (or >=20.19)
 - npm: comes with Node
 - Linux/macOS terminal
 
-Tip: Use `nvm` (Node Version Manager) to easily install/select Node versions.
+---
 
-## Quick Start (Recommended)
-Use the provided setup script to prepare the environment and start the app.
+## Quick Start — Docker (Recommended)
+Run the app on any machine with a single command. No Node.js install needed.
+
+```bash
+# From project root
+docker compose up --build
+```
+
+This will:
+- Build the app inside a Node 22 container (`npm ci` + `vite build`)
+- Serve the production build via nginx on port **8080**
+
+Open: http://localhost:8080
+
+To stop:
+```bash
+docker compose down
+```
+
+To rebuild after code changes:
+```bash
+docker compose up --build
+```
+
+> **Instagram token at build time:** If you use the Instagram integration, create a `.env.local` file with your token *before* running `docker compose up --build`. The token is read during the build step and is never baked into the image.
+
+---
+
+## Quick Start — Local Dev (Alternative)
+Use the provided setup script to prepare the environment and start the Vite dev server.
 
 ```bash
 # From project root
@@ -23,7 +56,7 @@ This will:
 - Start the Vite dev server
 
 Notes:
-- The script now auto-loads an existing `nvm` install, so you don't have to open a new shell first.
+- The script auto-loads an existing `nvm` install, so you don't have to open a new shell first.
 - If Node 22 is missing, it will be installed automatically via `nvm`.
 
 Open the printed URL (e.g., http://localhost:5173).
@@ -120,13 +153,23 @@ Notes:
 - If `INSTAGRAM_TOKEN` is missing, pages gracefully fallback to placeholder images.
 
 ## Build & Preview
+
+**Docker (production build, served via nginx):**
+```bash
+docker compose up --build
+```
+Open http://localhost:8080.
+
+**Local (Vite preview of production build):**
 ```bash
 npm run build
 npm run preview
 ```
 
 ## Troubleshooting
-- Node version error: Vite 7 requires Node `>=20.19` or `22.12+`.
+- **Docker port conflict:** If port 8080 is in use, edit `docker-compose.yml` and change `"8080:80"` to another port (e.g. `"3000:80"`).
+- **Docker build fails (ENOENT / missing files):** Make sure you run `docker compose up --build` from the project root where `Dockerfile` lives.
+- Node version error (local): Vite 7 requires Node `>=20.19` or `22.12+`.
   - Fix with `nvm install 22 && nvm use 22` or run `bash ./setup.sh --node 22 --dev`.
 - Instagram fetch fails (exit code 2): Ensure `.env.local` contains a valid `INSTAGRAM_TOKEN` and you have network access.
 
@@ -144,3 +187,4 @@ npm run preview
 - Theme: `src/assets/styles.css`
 - Media: `public/media/` (your uploads) and `public/media/placeholders/` (dummy images)
 - Instagram cache: `public/instagram.json`
+- Docker: `Dockerfile`, `docker-compose.yml`, `nginx.conf`, `.dockerignore`

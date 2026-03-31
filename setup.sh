@@ -126,7 +126,7 @@ run_preview() {
     npm run preview
 }
 
-echo "== Rachana Artverse setup =="
+echo "== Henna By Rachana setup =="
 install_nvm_if_missing
 ensure_node
 install_dependencies

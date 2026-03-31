@@ -1,6 +1,6 @@
 # rarecreates
 
-# Rachana Artverse — Website
+# Henna By Rachana — Website
 
 Three-page Vue site for showcasing mehndi work.
 
@@ -15,32 +15,25 @@ Dark green / beige-brown palette. Modern, elegant, and simple.
 ## Media Uploads
 Place your images in `public/media/` (e.g. `public/media/designs/`). The gallery currently uses placeholder SVGs in `public/media/placeholders/`.
 
-## Run Locally
+## Run
 
-Quick start (recommended):
+**Docker (recommended — works on any machine):**
+
+```bash
+docker compose up --build
+```
+
+Open http://localhost:8080. No Node.js install required.
+
+**Local dev (Vite hot-reload):**
 
 ```bash
 bash ./setup.sh --dev
 ```
 
-This will auto-load your existing `nvm` install (no need to reopen the shell), install Node 22 if missing, install dependencies, and start Vite.
+This auto-loads `nvm`, installs Node 22 if missing, installs deps, and starts Vite. Open the URL printed in the terminal (e.g. http://localhost:5173).
 
-Manual steps:
-
-```bash
-# If you use nvm (recommended)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-nvm install 22
-nvm use 22
-
-# Install deps and start
-npm install
-npm run dev
-```
-
-Open the dev URL printed in the terminal.
+See `readme_setup_run.md` for full details on both approaches.
 
 ## Instagram Integration (Optional)
 - This repo can pull your latest Instagram posts at build time using the Instagram Basic Display API.
