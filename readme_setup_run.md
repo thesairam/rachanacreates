@@ -24,9 +24,9 @@ docker compose up --build
 
 This will:
 - Build the app inside a Node 22 container (`npm ci` + `vite build`)
-- Serve the production build via nginx on port **8080**
+- Serve the production build via nginx on port **7273**
 
-Open: http://localhost:8080
+Open: http://localhost:7273
 
 To stop:
 ```bash
@@ -158,7 +158,7 @@ Notes:
 ```bash
 docker compose up --build
 ```
-Open http://localhost:8080.
+Open http://localhost:7273.
 
 **Local (Vite preview of production build):**
 ```bash
@@ -167,7 +167,7 @@ npm run preview
 ```
 
 ## Troubleshooting
-- **Docker port conflict:** If port 8080 is in use, edit `docker-compose.yml` and change `"8080:80"` to another port (e.g. `"3000:80"`).
+- **Docker port conflict:** If port 7273 is in use, edit `docker-compose.yml` and change `"7273:80"` to another port.
 - **Docker build fails (ENOENT / missing files):** Make sure you run `docker compose up --build` from the project root where `Dockerfile` lives.
 - Node version error (local): Vite 7 requires Node `>=20.19` or `22.12+`.
   - Fix with `nvm install 22 && nvm use 22` or run `bash ./setup.sh --node 22 --dev`.

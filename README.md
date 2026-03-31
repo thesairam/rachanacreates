@@ -23,7 +23,7 @@ Place your images in `public/media/` (e.g. `public/media/designs/`). The gallery
 docker compose up --build
 ```
 
-Open http://localhost:8080. No Node.js install required.
+Open http://localhost:7273. No Node.js install required.
 
 **Local dev (Vite hot-reload):**
 
