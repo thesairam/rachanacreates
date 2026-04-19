@@ -1,5 +1,5 @@
 <script setup>
-const logo = '/media/logo/logow.png'
+const logo = '/media/logo/logo.png'
 </script>
 
 <template>

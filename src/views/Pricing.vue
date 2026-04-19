@@ -85,30 +85,30 @@ const packages = [
     name: 'Standard Package',
     subtitle: '',
     coverage: 'Both hands till 1/2 arm length + minimal design on both legs',
-    price: '€200'
+    price: '€150'
   },
   {
     name: 'Premium Package',
     subtitle: '',
     coverage: 'Both hands till elbow length + minimal design on both legs',
-    price: '€300'
+    price: '€250'
   },
   {
     name: 'Bridal Package',
     subtitle: '',
     coverage: 'Both hands above elbow length + minimal design on both legs',
-    price: '€400'
+    price: '€350'
   }
 ]
 
 const alaCarte = [
-  { step: '1', name: 'Wrist', detail: 'One side', price: '€17' },
+  { step: '1', name: 'Wrist', detail: 'One side', price: '€10' },
   { step: '2', name: 'Mid Arm', detail: 'One side', price: '€30' },
-  { step: '3', name: 'Elbow', detail: 'One side', price: '€130' },
-  { step: '4', name: 'Above Elbow', detail: 'One side', price: '€150' }
+  { step: '3', name: 'Elbow', detail: 'One side', price: '€60' },
+  { step: '4', name: 'Above Elbow', detail: 'One side', price: '€100' }
 ]
 
-// Use the provided map photo for the one-side coverage visual
+// Use the original map.jpeg for the one-side coverage visual
 const coverageImage = '/media/designs/map.jpeg'
 </script>
 
