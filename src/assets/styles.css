@@ -91,3 +91,22 @@ img.placeholder {
   font-size: 22px;
   margin: 28px 0 12px;
 }
+
+@media (max-width: 720px) {
+  .container { width: min(1100px, 94vw); }
+  .page { padding: 16px 0 32px; }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .hero h1 { font-size: clamp(24px, 7vw, 32px); }
+  .grid { gap: 12px; }
+  .button {
+    padding: 12px 16px;
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+  .section-title { font-size: 20px; margin: 20px 0 10px; }
+  .card { border-radius: 14px; }
+}

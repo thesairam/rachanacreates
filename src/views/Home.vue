@@ -7,9 +7,9 @@
         baby showers, sangeet, and all special moments. Minimal to intricate — crafted
         with care. Make hands Insta-Famous.
       </p>
-      <div style="margin-top:16px; display:flex; gap:12px;">
+      <div class="cta-row">
         <RouterLink class="button" to="/designs">Explore Designs</RouterLink>
-        <RouterLink class="button" style="background:var(--muted);" to="/contact">Book Now</RouterLink>
+        <RouterLink class="button btn-alt" to="/contact">Book Now</RouterLink>
       </div>
     </div>
     <div class="card" style="overflow:hidden;">
@@ -38,4 +38,15 @@ const topThree = designImages.slice(0, 3)
 </script>
 
 <style scoped>
+.cta-row {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn-alt { background: var(--muted); }
+
+@media (max-width: 720px) {
+  .cta-row { flex-direction: column; align-items: stretch; }
+}
 </style>

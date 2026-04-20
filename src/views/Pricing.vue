@@ -351,4 +351,16 @@ h1 {
   .table .row.head { display: none; }
   .cell { align-items: flex-start; }
 }
+
+@media (max-width: 720px) {
+  .pricing-page { gap: 16px; }
+  .panel { padding: 16px 14px; border-radius: 14px; }
+  .ala-carte .cards { grid-template-columns: 1fr; }
+  .card-item { padding: 12px 14px; }
+  .card-price { padding: 6px 10px; font-size: 14px; }
+  .coverage-figure img { width: 100%; }
+  .coverage-figure figcaption { font-size: 13px; padding: 10px; }
+  .chips { gap: 8px; }
+  .chip { padding: 6px 10px; font-size: 13px; }
+}
 </style>

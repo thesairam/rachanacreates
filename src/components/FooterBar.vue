@@ -21,5 +21,17 @@ const year = new Date().getFullYear()
   padding: 16px 0;
   color: var(--muted);
   font-size: 14px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 13px;
+    padding: 14px 0;
+  }
 }
 </style>
