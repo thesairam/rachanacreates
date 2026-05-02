@@ -1,9 +1,9 @@
-node_modules
-dist
+app/node_modules
+app/dist
 .env*.local
 *.local
 .git
 .gitignore
 README.md
-readme_setup_run.md
-setup.sh
+.vscode
+.claude

@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Read(///wsl.localhost/Ubuntu-24.04/home/rare/**)",
-      "Read(///wsl.localhost/Ubuntu-24.04/home/**)"
+      "Read(///wsl.localhost/Ubuntu-24.04/home/**)",
+      "Bash(ls \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\rare\\\\projects\\\\rachanacreates\")",
+      "Bash(git checkout *)",
+      "Bash(ls \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\rare\\\\projects\\\\kitchenasitis\\\\app\")",
+      "Bash(ls \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\rare\\\\projects\\\\kitchenasitis\\\\app\\\\src\")"
     ]
   }
 }

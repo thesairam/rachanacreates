@@ -3,21 +3,17 @@ FROM node:22-alpine AS build
 
 WORKDIR /app
 
-# Install deps first (layer-cached until package files change)
-COPY package*.json ./
+COPY app/package*.json ./
 RUN npm ci
 
-# Copy source and build
-COPY . .
+COPY app/ ./
 RUN npm run build
 
 # ── Stage 2: serve ────────────────────────────────────────────────────────────
 FROM nginx:stable-alpine AS runtime
 
-# Custom nginx config (handles SPA client-side routing)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy built assets from the build stage
 COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 80
