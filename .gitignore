@@ -38,3 +38,10 @@ __screenshots__/
 # Env files (keep secrets out of git)
 .env
 .env.*
+!.env.example
+server/.env
+!server/.env.example
+
+# Windows Zone.Identifier metadata (created when files are copied from Windows)
+*:Zone.Identifier
+*Zone.Identifier

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const HEADLINE = 'Elegant Mehndi for Every Occasion'.split(' ')
+const HEADLINE = 'Elegant Henna for Every Occasion'.split(' ')
 const heroImg = '/media/designs/1.png'
 
 export default function Hero() {
@@ -37,8 +37,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 + HEADLINE.length * 0.07 }}
             className="mt-6 text-lg md:text-xl text-muted max-w-xl leading-relaxed"
           >
-            Modern, timeless mehndi designs for weddings, festivals, baby showers, sangeet
-            and all special moments. Minimal to intricate — crafted with care.
+            Handcrafted henna made from 100% natural ingredients, inspired by tradition
+            and created to celebrate beauty, culture, and self-expression. Simple, safe,
+            and made with care.
           </motion.p>
 
           <motion.div

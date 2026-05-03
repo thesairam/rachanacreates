@@ -1,19 +1,21 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const initial = { name: '', email: '', message: '', consent: false }
+const initial = { name: '', email: '', message: '', website: '', consent: false }
+const CONTACT_ENDPOINT = '/api/contact'
 
 export default function Contact() {
   const [form, setForm] = useState(initial)
   const [showPolicy, setShowPolicy] = useState(false)
   const [status, setStatus] = useState({ kind: 'idle', msg: '' })
+  const [submitting, setSubmitting] = useState(false)
 
   const update = (k) => (e) => {
     const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value
     setForm((f) => ({ ...f, [k]: v }))
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     if (!form.consent) {
       setStatus({ kind: 'error', msg: 'Please confirm you have read the privacy notice and consent to your data being used to reply.' })
@@ -24,17 +26,40 @@ export default function Contact() {
       return
     }
 
-    const subject = encodeURIComponent(`Booking enquiry — ${form.name}`)
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}\n\n— Sent from hennabyrachana.com (consent given on ${new Date().toISOString()})`
-    )
-    window.location.href = `mailto:hello@hennabyrachana.com?subject=${subject}&body=${body}`
-    setStatus({ kind: 'ok', msg: 'Opening your email app to send the enquiry.' })
+    setSubmitting(true)
+    setStatus({ kind: 'idle', msg: 'Sending your enquiry...' })
+
+    try {
+      const res = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          website: form.website,
+          consent_given_at: new Date().toISOString()
+        })
+      })
+
+      const data = await res.json().catch(() => ({}))
+      if (res.ok && data.ok) {
+        setStatus({ kind: 'ok', msg: 'Thanks! Your enquiry has been sent. Rachana will reply by email soon.' })
+        setForm(initial)
+      } else {
+        const msg = data?.error || 'Something went wrong sending the form. Please try again, or email hennabyrachana@gmail.com.'
+        setStatus({ kind: 'error', msg })
+      }
+    } catch {
+      setStatus({ kind: 'error', msg: 'Network error. Please try again, or email hennabyrachana@gmail.com directly.' })
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const onClear = () => {
     setForm(initial)
-    setStatus({ kind: 'idle', msg: 'Form cleared. No data is stored.' })
+    setStatus({ kind: 'idle', msg: 'Form cleared.' })
   }
 
   return (
@@ -56,7 +81,7 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-muted mb-8"
         >
-          For bookings and enquiries — drop a message below, or reach out on Instagram or WhatsApp.
+          For bookings and enquiries, drop a message below or reach out on Instagram or WhatsApp.
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-5">
@@ -69,6 +94,21 @@ export default function Contact() {
             className="card p-6 md:p-7 flex flex-col gap-3"
             noValidate
           >
+            {/* Honeypot - hidden from real users via aria + tab + visual; bots fill it. */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+              <label>
+                Website
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form.website}
+                  onChange={update('website')}
+                />
+              </label>
+            </div>
+
             <label className="flex flex-col gap-1.5">
               <span className="text-sm text-muted">Name</span>
               <input
@@ -131,25 +171,37 @@ export default function Contact() {
               >
                 <strong className="text-text block mb-1">Privacy notice (GDPR)</strong>
                 <p>
-                  <strong>Controller:</strong> Henna By Rachana, Amsterdam, NL — hello@hennabyrachana.com.
+                  <strong>Controller:</strong> Henna By Rachana, Amsterdam, NL - hennabyrachana@gmail.com.
                 </p>
                 <p className="mt-2">
-                  <strong>What we collect:</strong> the name, email and message you submit.
+                  <strong>What we collect:</strong> the name, email and message you submit through this
+                  form, plus the timestamp of your consent.
                 </p>
                 <p className="mt-2">
-                  <strong>Why:</strong> only to reply to your enquiry. Lawful basis: your consent (GDPR Art. 6(1)(a)).
+                  <strong>Why:</strong> only to reply to your enquiry and arrange your booking. Lawful
+                  basis: your consent (GDPR Art. 6(1)(a)).
                 </p>
                 <p className="mt-2">
-                  <strong>How:</strong> the form opens your email client with the message — nothing is stored on this website,
-                  no analytics, cookies or third-party trackers are used here.
+                  <strong>How the form works:</strong> on submit, your message is sent to our own
+                  small server hosted on DigitalOcean (EU region), which immediately relays it as an
+                  email to our Gmail inbox via Google's SMTP service. The server does not log
+                  the contents of your message and does not store it in any database. No analytics,
+                  cookies, or third-party trackers are used on this site.
                 </p>
                 <p className="mt-2">
-                  <strong>Retention:</strong> we keep correspondence only as long as needed to handle your booking, then delete it.
-                  We never share or sell your data.
+                  <strong>Sub-processors:</strong> DigitalOcean (hosting, EU region) and Google
+                  (Gmail SMTP and inbox storage) process your data on our behalf. Their own privacy
+                  policies apply.
                 </p>
                 <p className="mt-2">
-                  <strong>Your rights:</strong> access, rectification, erasure, restriction, objection, portability,
-                  and to lodge a complaint with the Autoriteit Persoonsgegevens. Email the studio to exercise any of these.
+                  <strong>Retention:</strong> we keep correspondence only as long as needed to handle
+                  your booking and any follow-up, then delete it. We never share or sell your data.
+                </p>
+                <p className="mt-2">
+                  <strong>Your rights:</strong> access, rectification, erasure, restriction, objection,
+                  portability, and to lodge a complaint with the Autoriteit Persoonsgegevens. Email the
+                  studio at <strong>hennabyrachana@gmail.com</strong> to exercise any of these or to
+                  withdraw your consent at any time.
                 </p>
               </motion.div>
             )}
@@ -159,8 +211,12 @@ export default function Contact() {
             )}
 
             <div className="flex flex-wrap gap-3 mt-2">
-              <button type="submit" className="button">Send enquiry</button>
-              <button type="button" onClick={onClear} className="button btn-alt">Clear form</button>
+              <button type="submit" className="button" disabled={submitting} aria-busy={submitting}>
+                {submitting ? 'Sending...' : 'Send enquiry'}
+              </button>
+              <button type="button" onClick={onClear} className="button btn-alt" disabled={submitting}>
+                Clear form
+              </button>
             </div>
           </motion.form>
 

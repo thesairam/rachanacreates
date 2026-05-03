@@ -1,21 +1,28 @@
-# ── Stage 1: build ────────────────────────────────────────────────────────────
-FROM node:22-alpine AS build
-
+# ── Stage 1: build the Vite frontend ─────────────────────────────────────────
+FROM node:22-alpine AS build-frontend
 WORKDIR /app
-
 COPY app/package*.json ./
 RUN npm ci
-
 COPY app/ ./
 RUN npm run build
 
-# ── Stage 2: serve ────────────────────────────────────────────────────────────
-FROM nginx:stable-alpine AS runtime
+# ── Stage 2: install server production deps ──────────────────────────────────
+FROM node:22-alpine AS server-deps
+WORKDIR /server
+COPY server/package*.json ./
+RUN npm install --omit=dev
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# ── Stage 3: runtime — Node serves the API and the built frontend ────────────
+FROM node:22-alpine AS runtime
+WORKDIR /srv
 
-COPY --from=build /app/dist /usr/share/nginx/html
+ENV NODE_ENV=production
+ENV PORT=8080
 
-EXPOSE 80
+COPY server/ ./server/
+COPY --from=server-deps /server/node_modules ./server/node_modules
+COPY --from=build-frontend /app/dist ./public
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 8080
+
+CMD ["node", "server/index.js"]

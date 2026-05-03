@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 
-const packages = [
-  { name: 'Standard Package', coverage: 'Both hands till 1/2 arm length + minimal design on both legs', price: '€150' },
-  { name: 'Premium Package', coverage: 'Both hands till elbow length + minimal design on both legs', price: '€250' },
-  { name: 'Bridal Package', coverage: 'Both hands above elbow length + minimal design on both legs', price: '€350' }
+const services = [
+  { name: 'Standard Service', coverage: 'Both hands till 1/2 arm length + minimal design on both legs', price: '€150' },
+  { name: 'Premium Service', coverage: 'Both hands till elbow length + minimal design on both legs', price: '€250' },
+  { name: 'Bridal Service', coverage: 'Both hands above elbow length + minimal design on both legs', price: '€350' }
 ]
 
 const alaCarte = [
@@ -20,16 +20,16 @@ const fade = {
   transition: { duration: 0.6 }
 }
 
-export default function Pricing() {
+export default function Services() {
   return (
-    <section id="pricing" className="relative py-24 px-6 md:px-10">
+    <section id="services" className="relative py-24 px-6 md:px-10">
       <div className="container-x flex flex-col gap-6">
         <motion.div {...fade} className="card p-6 md:p-8 grid md:grid-cols-[1.4fr_1fr] gap-5 items-center">
           <div>
             <p className="text-xs tracking-[0.3em] uppercase text-muted mb-2">Henna By Rachana</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold">Pricing & Packages</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold">Services</h2>
             <p className="text-muted mt-3 leading-relaxed">
-              Clear coverage, clear prices. Choose a package or build your own based on coverage.
+              Clear coverage, clear prices. Choose a service or build your own based on coverage.
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
               {['Travel-friendly', 'Custom designs on request', 'Both hands or full bridal'].map((c) => (
@@ -40,16 +40,16 @@ export default function Pricing() {
         </motion.div>
 
         <motion.div {...fade} className="card p-6 md:p-8">
-          <h3 className="text-2xl font-extrabold">Packages</h3>
+          <h3 className="text-2xl font-extrabold">Services</h3>
           <p className="text-muted mt-1 mb-4">Coverage, price and inclusions.</p>
 
           <div className="grid gap-2">
             <div className="hidden md:grid grid-cols-[1fr_1.4fr_0.5fr] bg-bg rounded-xl px-4 py-3 font-bold">
-              <div>Packages</div>
+              <div>Services</div>
               <div>Areas Covered</div>
               <div className="text-right">Price</div>
             </div>
-            {packages.map((p, i) => (
+            {services.map((p, i) => (
               <motion.div
                 key={p.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ export default function Pricing() {
           <figure className="card mt-5 p-0 overflow-hidden">
             <img src="/media/designs/map.jpeg" alt="One-side henna pricing reference" className="block w-[70%] h-auto mx-auto" />
             <figcaption className="px-3 py-2 text-muted text-sm">
-              Reference visual — wrist, mid arm, elbow, and above elbow coverage.
+              Reference visual: wrist, mid arm, elbow, and above elbow coverage.
             </figcaption>
           </figure>
 

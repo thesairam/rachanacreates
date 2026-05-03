@@ -1,9 +1,13 @@
 app/node_modules
 app/dist
+server/node_modules
+server/.env
+.env
 .env*.local
 *.local
 .git
 .gitignore
 README.md
+changes.md
 .vscode
 .claude

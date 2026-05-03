@@ -1,0 +1,36 @@
+# DigitalOcean App Platform spec.
+# DO auto-detects the Dockerfile at the repo root, but pinning this file
+# keeps the routing, health check and env-var contract under source control.
+name: rachanacreates
+region: ams
+services:
+  - name: web
+    dockerfile_path: Dockerfile
+    source_dir: /
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    health_check:
+      http_path: /api/health
+    routes:
+      - path: /
+    envs:
+      - key: NODE_ENV
+        value: production
+      # Set the SMTP secrets in the App Platform dashboard (type: SECRET).
+      # Do NOT commit values for these.
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "465"
+      - key: SMTP_USER
+        scope: RUN_TIME
+        type: SECRET
+      - key: SMTP_PASS
+        scope: RUN_TIME
+        type: SECRET
+      - key: TO_EMAIL
+        scope: RUN_TIME
+        type: SECRET
+      - key: FROM_NAME
+        value: Henna By Rachana - Website
