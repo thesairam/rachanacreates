@@ -6,7 +6,9 @@
       "Bash(ls \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\rare\\\\projects\\\\rachanacreates\")",
       "Bash(git checkout *)",
       "Bash(ls \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\rare\\\\projects\\\\kitchenasitis\\\\app\")",
-      "Bash(ls \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\rare\\\\projects\\\\kitchenasitis\\\\app\\\\src\")"
+      "Bash(ls \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\rare\\\\projects\\\\kitchenasitis\\\\app\\\\src\")",
+      "PowerShell(New-NetFirewallRule -DisplayName \"Docker rachanacreates 7273\" -Direction Inbound -LocalPort 7273 -Protocol TCP -Action Allow -Profile Private)",
+      "PowerShell(Get-NetConnectionProfile)"
     ]
   }
 }
