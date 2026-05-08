@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion'
 
 const HEADLINE = 'Elegant Henna for Every Occasion'.split(' ')
-const heroImg = '/media/designs/1.png'
+const heroImg = '/media/designs/bridal-henna-mehandi-design-netherlands-artist.png'
+
+const navigate = (id) => {
+  const path = id === 'home' ? '/' : `/${id}`
+  window.history.pushState({ section: id }, '', path)
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth' })
+}
 
 export default function Hero() {
   return (
@@ -48,8 +55,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 + HEADLINE.length * 0.07 }}
             className="mt-8 flex flex-wrap gap-3"
           >
-            <a href="#designs" className="button">Explore Designs</a>
-            <a href="#contact" className="button btn-alt">Book Now</a>
+            <button onClick={() => navigate('designs')} className="button">Explore Designs</button>
+            <button onClick={() => navigate('contact')} className="button btn-alt">Book Now</button>
           </motion.div>
         </div>
 

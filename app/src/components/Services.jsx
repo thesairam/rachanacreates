@@ -101,7 +101,7 @@ export default function Services() {
           </div>
 
           <figure className="card mt-5 p-0 overflow-hidden">
-            <img src="/media/designs/map.jpeg" alt="One-side henna pricing reference" className="block w-[70%] h-auto mx-auto" />
+            <img src="/media/designs/netherlands-henna-mehandi-pricing-map.jpeg" alt="One-side henna pricing reference" className="block w-[70%] h-auto mx-auto" />
             <figcaption className="px-3 py-2 text-muted text-sm">
               Reference visual: wrist, mid arm, elbow, and above elbow coverage.
             </figcaption>

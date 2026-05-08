@@ -25,7 +25,7 @@ export default function WhatIsHenna() {
             className="card overflow-hidden"
           >
             <img
-              src="/media/Informative/HomePage-informative.png"
+              src="/media/informative/henna-mehandi-what-is-information-guide.png"
               alt="Hands adorned with henna, natural plant-based body art"
               className="placeholder aspect-[4/5] md:aspect-auto md:h-full"
             />

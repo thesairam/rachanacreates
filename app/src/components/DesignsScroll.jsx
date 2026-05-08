@@ -2,16 +2,16 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const items = [
-  { url: '/media/designs/1.png', alt: 'Design 1', tag: 'Bridal' },
-  { url: '/media/designs/2.png', alt: 'Design 2', tag: 'Arabic' },
-  { url: '/media/designs/3.png', alt: 'Design 3', tag: 'Indo-Western' },
-  { url: '/media/designs/4.png', alt: 'Design 4', tag: 'Festive' }
+  { url: '/media/designs/bridal-henna-mehandi-design-netherlands-artist.png', alt: 'Design 1', tag: 'Bridal' },
+  { url: '/media/designs/arabic-henna-mehandi-design-netherlands-artist.png', alt: 'Design 2', tag: 'Arabic' },
+  { url: '/media/designs/indo-western-henna-mehandi-design-netherlands-artist.png', alt: 'Design 3', tag: 'Indo-Western' },
+  { url: '/media/designs/festive-henna-mehandi-design-netherlands-artist.png', alt: 'Design 4', tag: 'Festive' }
 ]
 
 const featured = [
-  { url: '/media/designs/1.png', alt: 'Featured design 1' },
-  { url: '/media/designs/2.png', alt: 'Featured design 2' },
-  { url: '/media/designs/3.png', alt: 'Featured design 3' }
+  { url: '/media/designs/bridal-henna-mehandi-design-netherlands-artist.png', alt: 'Featured design 1' },
+  { url: '/media/designs/arabic-henna-mehandi-design-netherlands-artist.png', alt: 'Featured design 2' },
+  { url: '/media/designs/indo-western-henna-mehandi-design-netherlands-artist.png', alt: 'Featured design 3' }
 ]
 
 const fade = {
@@ -73,17 +73,20 @@ export default function DesignsScroll() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {featured.map((it, i) => (
-              <motion.a
+              <motion.button
                 key={it.url}
-                href="#designs-gallery"
+                onClick={() => {
+                  const el = document.getElementById('designs-gallery')
+                  if (el) el.scrollIntoView({ behavior: 'smooth' })
+                }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.7, delay: i * 0.1, ease: [0.2, 0.65, 0.3, 1] }}
-                className="card overflow-hidden aspect-square block"
+                className="card overflow-hidden aspect-square block bg-transparent border-0 cursor-pointer"
               >
                 <img src={it.url} alt={it.alt} className="placeholder" />
-              </motion.a>
+              </motion.button>
             ))}
           </div>
         </div>
