@@ -106,7 +106,7 @@ app.use(express.static(distPath, {
     if (/\.(js|css|woff2?|ttf|eot|ico)$/i.test(filePath)) {
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable')
     } else if (/\.(png|jpe?g|gif|svg|webp|avif)$/i.test(filePath)) {
-      res.setHeader('Cache-Control', 'no-store, must-revalidate')
+      res.setHeader('Cache-Control', 'public, max-age=86400')
     } else {
       res.setHeader('Cache-Control', 'no-cache')
     }
