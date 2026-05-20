@@ -28,6 +28,14 @@ const transporter = nodemailer.createTransport({
 const app = express()
 app.set('trust proxy', 1)
 app.disable('x-powered-by')
+
+app.use((req, res, next) => {
+  if (req.hostname === 'hennabyrachana.com') {
+    return res.redirect(301, `https://www.hennabyrachana.com${req.url}`)
+  }
+  next()
+})
+
 app.use(express.json({ limit: '32kb' }))
 
 const contactLimiter = rateLimit({
