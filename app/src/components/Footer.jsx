@@ -50,7 +50,7 @@ export default function Footer() {
         <div className="flex items-center gap-3">
           <span>© {year} Henna By Rachana</span>
           <span className="hidden sm:inline opacity-60">·</span>
-          <span className="hidden sm:inline">Crafted with love and mehndi.</span>
+          <span className="hidden sm:inline">Crafted with love and mehandi.</span>
         </div>
         <ul className="flex items-center gap-1.5">
           {socials.map((s) => (
