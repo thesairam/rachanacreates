@@ -68,7 +68,7 @@ export default function Nav() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        solid ? 'bg-bg/85 backdrop-blur border-b border-border' : 'bg-transparent'
+        solid || open ? 'bg-bg/85 backdrop-blur border-b border-border' : 'bg-transparent'
       }`}
     >
       <div className="container-x flex items-center justify-between py-5">
