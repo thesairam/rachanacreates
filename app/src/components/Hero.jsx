@@ -66,7 +66,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: [0.2, 0.65, 0.3, 1] }}
           className="md:col-span-5 card overflow-hidden aspect-[4/5]"
         >
-          <img src={heroImg} alt="Featured mehndi design" className="placeholder" />
+          <img src={heroImg} alt="Bridal mehndi design by Rachana, henna artist in Amsterdam, Netherlands" className="placeholder" />
         </motion.div>
       </div>
     </section>
