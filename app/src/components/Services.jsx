@@ -74,6 +74,7 @@ export default function Services() {
             <li>Prices may vary based on design complexity.</li>
             <li>Both legs include minimal design to echo the reference layout.</li>
             <li>Prices exclude a convenience fee, which will be added separately and covers travel charges and time to your location.</li>
+            <li>Prices exclude BTW (VAT) where applicable.</li>
           </ul>
         </motion.div>
 
@@ -113,6 +114,7 @@ export default function Services() {
             <li>Both sides available on request.</li>
             <li>Bridal and custom designs are priced separately.</li>
             <li>Prices exclude a convenience fee, which will be added separately and covers travel charges and time to your location.</li>
+            <li>Prices exclude BTW (VAT) where applicable.</li>
           </ul>
         </motion.div>
       </div>
