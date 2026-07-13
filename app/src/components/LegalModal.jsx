@@ -31,12 +31,12 @@ export default function LegalModal({ open, onClose }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
             transition={{ duration: 0.3, ease: [0.2, 0.65, 0.3, 1] }}
-            className="fixed inset-x-4 top-[5vh] bottom-[5vh] md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-2xl z-[61] bg-bg border border-border rounded-2xl overflow-y-auto"
+            className="fixed inset-x-4 top-[5vh] bottom-[5vh] md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-2xl z-[61] bg-bg border border-border rounded-2xl flex flex-col overflow-hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Legal information"
           >
-            <div className="sticky top-0 bg-bg border-b border-border px-6 py-4 flex items-center justify-between">
+            <div className="flex-shrink-0 bg-bg border-b border-border px-6 py-4 flex items-center justify-between">
               <h2 className="text-xl font-extrabold">Legal</h2>
               <button
                 onClick={onClose}
@@ -47,7 +47,7 @@ export default function LegalModal({ open, onClose }) {
               </button>
             </div>
 
-            <div className="px-6 py-6 space-y-8 text-sm text-muted leading-relaxed">
+            <div className="flex-1 overflow-y-auto px-6 py-6 space-y-8 text-sm text-muted leading-relaxed">
 
               {/* Business details */}
               <section>
