@@ -244,7 +244,7 @@ export default function Contact() {
               <p className="font-semibold text-text mb-1">Business details</p>
               <p>Henna By Rachana</p>
               <p>KVK 42110227</p>
-              <p>BTW NL869777002B01</p>
+              <p>BTW 869777002</p>
               <p>Amsterdam, Netherlands</p>
             </div>
           </motion.div>
