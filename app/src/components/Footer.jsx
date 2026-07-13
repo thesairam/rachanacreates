@@ -21,7 +21,7 @@ const socials = [
   },
   {
     label: 'TikTok',
-    href: 'https://www.tiktok.com/@henna_by_rachana',
+    href: 'https://www.tiktok.com/@henna_by_rachana_',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M16.5 3c.4 1.7 1.3 3.1 2.7 4 .8.5 1.7.8 2.6.9v3c-1.6 0-3.1-.4-4.5-1.2v6.6c0 3.5-2.8 6.3-6.3 6.3S4.7 19.8 4.7 16.3 7.5 10 11 10c.4 0 .8 0 1.2.1v3.1c-.4-.1-.8-.2-1.2-.2-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3V3h2.2z"/>

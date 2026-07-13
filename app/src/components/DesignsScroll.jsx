@@ -174,7 +174,7 @@ export default function DesignsScroll() {
                 Watch on YouTube
               </a>
               <a
-                href="https://www.tiktok.com/@henna_by_rachana"
+                href="https://www.tiktok.com/@henna_by_rachana_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="button btn-alt"
