@@ -2,16 +2,16 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const items = [
-  { url: '/media/designs/bridal-henna-mehandi-design-netherlands-artist.png', alt: 'Design 1', tag: 'Bridal' },
-  { url: '/media/designs/arabic-henna-mehandi-design-netherlands-artist.png', alt: 'Design 2', tag: 'Arabic' },
-  { url: '/media/designs/indo-western-henna-mehandi-design-netherlands-artist.png', alt: 'Design 3', tag: 'Indo-Western' },
-  { url: '/media/designs/festive-henna-mehandi-design-netherlands-artist.png', alt: 'Design 4', tag: 'Festive' }
+  { url: '/media/designs/bridal-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Bridal mehndi design by Rachana, henna artist Amsterdam Netherlands', tag: 'Bridal' },
+  { url: '/media/designs/arabic-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Arabic henna mehndi design by Rachana, Amsterdam Netherlands', tag: 'Arabic' },
+  { url: '/media/designs/indo-western-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Indo-western henna mehndi design by Rachana, Netherlands', tag: 'Indo-Western' },
+  { url: '/media/designs/festive-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Festive henna mehndi design by Rachana, mehndi artist Netherlands', tag: 'Festive' },
 ]
 
 const featured = [
-  { url: '/media/designs/bridal-henna-mehandi-design-netherlands-artist.png', alt: 'Featured design 1' },
-  { url: '/media/designs/arabic-henna-mehandi-design-netherlands-artist.png', alt: 'Featured design 2' },
-  { url: '/media/designs/indo-western-henna-mehandi-design-netherlands-artist.png', alt: 'Featured design 3' }
+  { url: '/media/designs/bridal-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Bridal mehndi design by Rachana, henna artist Amsterdam Netherlands' },
+  { url: '/media/designs/arabic-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Arabic henna mehndi design by Rachana, Amsterdam Netherlands' },
+  { url: '/media/designs/indo-western-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Indo-western henna mehndi design by Rachana, Netherlands' },
 ]
 
 const fade = {

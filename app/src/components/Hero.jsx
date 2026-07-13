@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const HEADLINE = 'Elegant Henna for Every Occasion'.split(' ')
-const heroImg = '/media/designs/bridal-henna-mehandi-design-netherlands-artist.png'
+const heroImg = '/media/designs/bridal-henna-mehndi-rachana-amsterdam-netherlands.png'
 
 const navigate = (id) => {
   const path = id === 'home' ? '/' : `/${id}`
