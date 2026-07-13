@@ -2,20 +2,20 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const items = [
+  { url: '/media/designs/festive-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Festive henna mehndi design by Rachana, mehndi artist Netherlands', tag: 'Festive' },
   { url: '/media/designs/floral-rose-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Floral rose henna mehndi design by Rachana, henna artist Amsterdam Netherlands', tag: 'Floral' },
+  { url: '/media/designs/yinyang-lotus-forearm-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Yin-yang lotus forearm henna mehndi design by Rachana, Amsterdam henna artist', tag: 'Custom' },
   { url: '/media/designs/bridal-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Bridal mehndi design by Rachana, henna artist Amsterdam Netherlands', tag: 'Bridal' },
   { url: '/media/designs/minimal-sunflower-finger-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Minimal sunflower finger henna mehndi design by Rachana, Amsterdam', tag: 'Minimal' },
   { url: '/media/designs/arabic-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Arabic henna mehndi design by Rachana, Amsterdam Netherlands', tag: 'Arabic' },
   { url: '/media/designs/lotus-yinyang-dreamcatcher-arm-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Lotus yin-yang dreamcatcher arm henna design by Rachana, LGBTQ friendly henna Amsterdam', tag: 'Custom' },
   { url: '/media/designs/indo-western-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Indo-western henna mehndi design by Rachana, Netherlands', tag: 'Indo-Western' },
-  { url: '/media/designs/yinyang-lotus-forearm-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Yin-yang lotus forearm henna mehndi design by Rachana, Amsterdam henna artist', tag: 'Custom' },
-  { url: '/media/designs/festive-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Festive henna mehndi design by Rachana, mehndi artist Netherlands', tag: 'Festive' },
 ]
 
 const featured = [
+  { url: '/media/designs/festive-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Festive henna mehndi design by Rachana, mehndi artist Netherlands' },
   { url: '/media/designs/floral-rose-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Floral rose henna mehndi design by Rachana, henna artist Amsterdam Netherlands' },
-  { url: '/media/designs/lotus-yinyang-dreamcatcher-arm-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Lotus yin-yang dreamcatcher arm henna design by Rachana, Amsterdam' },
-  { url: '/media/designs/bridal-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Bridal mehndi design by Rachana, henna artist Amsterdam Netherlands' },
+  { url: '/media/designs/yinyang-lotus-forearm-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Yin-yang lotus forearm henna mehndi design by Rachana, Amsterdam' },
 ]
 
 const fade = {
