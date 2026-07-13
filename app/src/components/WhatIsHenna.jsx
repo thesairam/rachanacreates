@@ -14,9 +14,12 @@ export default function WhatIsHenna() {
         <motion.p {...fade} className="text-xs tracking-[0.3em] uppercase text-muted mb-3">
           About Henna
         </motion.p>
-        <motion.h2 {...fade} className="text-3xl md:text-5xl font-extrabold leading-tight mb-10">
+        <motion.h2 {...fade} className="text-3xl md:text-5xl font-extrabold leading-tight mb-2">
           What is Henna?
         </motion.h2>
+        <motion.p {...fade} transition={{ ...fade.transition, delay: 0.05 }} className="text-muted mb-10">
+          Wat is henna? · Alles over mehndi, bruidsmehndi en natuurlijke henna
+        </motion.p>
 
         <div className="grid md:grid-cols-2 gap-6 items-stretch">
           <motion.figure

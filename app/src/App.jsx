@@ -5,6 +5,7 @@ import WhatIsHenna from './components/WhatIsHenna.jsx'
 import DesignsScroll from './components/DesignsScroll.jsx'
 import Services from './components/Services.jsx'
 import About from './components/About.jsx'
+import FAQ from './components/FAQ.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -19,6 +20,7 @@ export default function App() {
       <DesignsScroll />
       <Services />
       <About />
+      <FAQ />
       <Contact />
       <Footer />
     </div>

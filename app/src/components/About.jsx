@@ -37,7 +37,7 @@ export default function About() {
           >
             <p>
               Based in <span className="text-text font-semibold">Amsterdam</span> and serving clients
-              across the Netherlands, I bring over <span className="text-text font-semibold">20 years
+              across the Netherlands — including <span className="text-text font-semibold">Rotterdam, Den Haag, Utrecht, Eindhoven, Amstelveen, Haarlem</span> and beyond — I bring over <span className="text-text font-semibold">20 years
               of experience</span> in henna art. My journey began at a young age, driven by a natural
               passion I believe is a gift from God.
             </p>
