@@ -58,6 +58,8 @@ export default function Footer() {
           <span>© {year} Henna By Rachana</span>
           <span className="opacity-60">·</span>
           <button onClick={() => setLegalOpen(true)} className="underline hover:text-text transition-colors bg-transparent border-0 cursor-pointer text-sm text-muted p-0">Legal</button>
+          <span className="opacity-60">·</span>
+          <a href="https://www.linkedin.com/in/sairam25/" target="_blank" rel="noopener noreferrer" className="hover:text-text transition-colors text-sm">Created with ♥ by Sai</a>
         </div>
         <ul className="flex items-center gap-1.5">
           {socials.map((s) => (
