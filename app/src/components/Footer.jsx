@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import LegalModal from './LegalModal'
+
 const socials = [
   {
     label: 'Instagram',
@@ -41,16 +44,20 @@ const socials = [
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const [legalOpen, setLegalOpen] = useState(false)
+
   return (
-    <footer
-      className="fixed bottom-0 inset-x-0 z-40 border-t border-border bg-bg2/95 backdrop-blur"
-      role="contentinfo"
-    >
+    <>
+      <LegalModal open={legalOpen} onClose={() => setLegalOpen(false)} />
+      <footer
+        className="fixed bottom-0 inset-x-0 z-40 border-t border-border bg-bg2/95 backdrop-blur"
+        role="contentinfo"
+      >
       <div className="container-x py-3 flex flex-wrap items-center justify-between gap-3 text-muted text-sm">
         <div className="flex items-center gap-3">
           <span>© {year} Henna By Rachana</span>
-          <span className="hidden sm:inline opacity-60">·</span>
-          <span className="hidden sm:inline">Crafted with love and mehandi.</span>
+          <span className="opacity-60">·</span>
+          <button onClick={() => setLegalOpen(true)} className="underline hover:text-text transition-colors bg-transparent border-0 cursor-pointer text-sm text-muted p-0">Legal</button>
         </div>
         <ul className="flex items-center gap-1.5">
           {socials.map((s) => (
@@ -70,5 +77,6 @@ export default function Footer() {
         </ul>
       </div>
     </footer>
+    </>
   )
 }
