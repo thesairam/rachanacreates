@@ -240,6 +240,13 @@ export default function Contact() {
             <p className="text-muted text-xs leading-relaxed mt-2">
               These links take you to third-party services (Meta, WhatsApp). Their own privacy policies apply once you leave this site.
             </p>
+            <div className="border-t border-border pt-4 text-xs text-muted leading-relaxed space-y-0.5">
+              <p className="font-semibold text-text mb-1">Business details</p>
+              <p>Henna By Rachana</p>
+              <p>KVK 42110227</p>
+              <p>BTW NL869777002B01</p>
+              <p>Amsterdam, Netherlands</p>
+            </div>
           </motion.div>
         </div>
       </div>

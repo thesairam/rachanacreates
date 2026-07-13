@@ -47,12 +47,10 @@ export default function Footer() {
       role="contentinfo"
     >
       <div className="container-x py-3 flex flex-wrap items-center justify-between gap-3 text-muted text-sm">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <div className="flex items-center gap-3">
           <span>© {year} Henna By Rachana</span>
-          <span className="opacity-60">·</span>
-          <span className="text-xs">KVK 42110227</span>
-          <span className="opacity-60">·</span>
-          <span className="text-xs">BTW NL869777002B01</span>
+          <span className="hidden sm:inline opacity-60">·</span>
+          <span className="hidden sm:inline">Crafted with love and mehandi.</span>
         </div>
         <ul className="flex items-center gap-1.5">
           {socials.map((s) => (
