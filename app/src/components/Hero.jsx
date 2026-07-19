@@ -21,7 +21,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-xs tracking-[0.3em] uppercase text-muted mb-5"
           >
-            Henna By Rachana · Studio
+            Henna By Rachana · Amsterdam &amp; heel Nederland
           </motion.p>
 
           <h1 className="font-extrabold leading-[1.05] text-[clamp(34px,5.2vw,64px)]">

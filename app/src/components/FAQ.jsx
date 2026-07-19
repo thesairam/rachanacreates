@@ -42,6 +42,26 @@ const faqs = [
     q: 'Wat is het verschil tussen henna en mehndi? (What is the difference between henna and mehndi?)',
     a: 'Henna en mehndi zijn hetzelfde — "mehndi" is het Hindi/Urdu woord voor henna. Beide verwijzen naar de plantaardige verf die wordt gebruikt voor tijdelijke tatoeages op de huid, traditioneel toegepast bij bruiloften en feesten.'
   },
+  {
+    q: 'Is Rachana LGBTQ+ friendly? Do you do same-sex weddings?',
+    a: 'Absolutely. Rachana warmly welcomes all clients regardless of gender, sexuality, or background. Henna is for everyone — bridal mehndi for same-sex couples, pride events, and LGBTQ+ celebrations are all welcome. Amsterdam Pride and all events are covered.'
+  },
+  {
+    q: 'Doet Rachana ook henna voor LGBTQ+ bruiloften en Pride Amsterdam?',
+    a: 'Ja, absoluut! Rachana is LGBTQ+ vriendelijk en verwelkomt alle klanten. Bruidsmehndi voor same-sex koppels, Pride Amsterdam, regenboog evenementen en queer bruiloften zijn van harte welkom.'
+  },
+  {
+    q: 'Bruidsmehndi in Rotterdam, Den Haag of Utrecht — kan dat?',
+    a: 'Ja! Rachana reist naar Rotterdam, Den Haag, Utrecht, Eindhoven, Amstelveen, Haarlem, Breda, Tilburg, Groningen en alle andere steden in Nederland. Er wordt een reiskostenvergoeding (convenience fee) toegevoegd op basis van de locatie.'
+  },
+  {
+    q: 'Can I get bridal henna in Rotterdam, Den Haag or Utrecht?',
+    a: 'Yes — Rachana travels to Rotterdam, Den Haag (The Hague), Utrecht, Eindhoven, Amstelveen, Haarlem, Breda, Tilburg, Groningen and all cities across the Netherlands. A travel convenience fee applies based on your location.'
+  },
+  {
+    q: 'Henna voor Indiaase of Pakistaanse bruiloft in Nederland?',
+    a: 'Ja! Rachana is gespecialiseerd in traditionele Indiase bruidsmehndi (mehndi raat / sangeet) en heeft meer dan 20 jaar ervaring. Zowel volledige bruidssets als gast-henna voor de mehndi avond zijn mogelijk door heel Nederland.'
+  },
 ]
 
 const fade = {

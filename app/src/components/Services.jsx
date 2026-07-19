@@ -26,13 +26,14 @@ export default function Services() {
       <div className="container-x flex flex-col gap-6">
         <motion.div {...fade} className="card p-6 md:p-8 grid md:grid-cols-[1.4fr_1fr] gap-5 items-center">
           <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-muted mb-2">Henna By Rachana</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold">Services</h2>
+            <p className="text-xs tracking-[0.3em] uppercase text-muted mb-2">Henna By Rachana · Amsterdam, Nederland</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold">Bruidsmehndi &amp; Henna Services</h2>
+            <p className="text-muted mt-1 text-sm">Bridal henna · Bruidsmehndi · Arabische henna · Feesthenna</p>
             <p className="text-muted mt-3 leading-relaxed">
-              Clear coverage, clear prices. Choose a service or build your own based on coverage.
+              Duidelijke prijzen, duidelijke coverage. Kies een service of stel je eigen pakket samen. Beschikbaar voor bruiloften, sangeet, events en workshops door heel Nederland.
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
-              {['Travel-friendly', 'Custom designs on request', 'Both hands or full bridal'].map((c) => (
+              {['Reist door heel Nederland', 'Op maat gemaakte designs', 'LGBTQ+ vriendelijk', 'Bridal & festive'].map((c) => (
                 <span key={c} className="px-3 py-1.5 rounded-full border border-border bg-card text-text font-semibold text-sm">{c}</span>
               ))}
             </div>
