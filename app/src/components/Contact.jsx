@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
 const initial = { name: '', email: '', message: '', website: '', consent: false }
 const CONTACT_ENDPOINT = '/api/contact'
 
 export default function Contact() {
+  const { t } = useLanguage()
+  const c = t.contact
+
   const [form, setForm] = useState(initial)
   const [showPolicy, setShowPolicy] = useState(false)
   const [status, setStatus] = useState({ kind: 'idle', msg: '' })
@@ -18,16 +22,16 @@ export default function Contact() {
   const onSubmit = async (e) => {
     e.preventDefault()
     if (!form.consent) {
-      setStatus({ kind: 'error', msg: 'Please confirm you have read the privacy notice and consent to your data being used to reply.' })
+      setStatus({ kind: 'error', msg: c.errorConsent })
       return
     }
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      setStatus({ kind: 'error', msg: 'Please fill name, email and message.' })
+      setStatus({ kind: 'error', msg: c.errorFields })
       return
     }
 
     setSubmitting(true)
-    setStatus({ kind: 'idle', msg: 'Sending your enquiry...' })
+    setStatus({ kind: 'idle', msg: '' })
 
     try {
       const res = await fetch(CONTACT_ENDPOINT, {
@@ -38,20 +42,19 @@ export default function Contact() {
           email: form.email,
           message: form.message,
           website: form.website,
-          consent_given_at: new Date().toISOString()
-        })
+          consent_given_at: new Date().toISOString(),
+        }),
       })
 
       const data = await res.json().catch(() => ({}))
       if (res.ok && data.ok) {
-        setStatus({ kind: 'ok', msg: 'Thanks! Your enquiry has been sent. Rachana will reply by email soon.' })
+        setStatus({ kind: 'ok', msg: c.successMsg })
         setForm(initial)
       } else {
-        const msg = data?.error || 'Something went wrong sending the form. Please try again, or email hennabyrachana@gmail.com.'
-        setStatus({ kind: 'error', msg })
+        setStatus({ kind: 'error', msg: data?.error || c.errorNetwork })
       }
     } catch {
-      setStatus({ kind: 'error', msg: 'Network error. Please try again, or email hennabyrachana@gmail.com directly.' })
+      setStatus({ kind: 'error', msg: c.errorNetwork })
     } finally {
       setSubmitting(false)
     }
@@ -59,7 +62,7 @@ export default function Contact() {
 
   const onClear = () => {
     setForm(initial)
-    setStatus({ kind: 'idle', msg: 'Form cleared.' })
+    setStatus({ kind: 'idle', msg: '' })
   }
 
   return (
@@ -72,7 +75,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-4xl font-extrabold mb-2"
         >
-          Get in Touch
+          {c.h2}
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
@@ -81,7 +84,7 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-muted mb-8"
         >
-          For bookings and enquiries, drop a message below or reach out on Instagram or WhatsApp.
+          {c.subtitle}
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-5">
@@ -94,23 +97,16 @@ export default function Contact() {
             className="card p-6 md:p-7 flex flex-col gap-3"
             noValidate
           >
-            {/* Honeypot - hidden from real users via aria + tab + visual; bots fill it. */}
+            {/* Honeypot */}
             <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
               <label>
                 Website
-                <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={form.website}
-                  onChange={update('website')}
-                />
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={update('website')} />
               </label>
             </div>
 
             <label className="flex flex-col gap-1.5">
-              <span className="text-sm text-muted">Name</span>
+              <span className="text-sm text-muted">{c.nameLabel}</span>
               <input
                 value={form.name}
                 onChange={update('name')}
@@ -122,7 +118,7 @@ export default function Contact() {
             </label>
 
             <label className="flex flex-col gap-1.5">
-              <span className="text-sm text-muted">Email</span>
+              <span className="text-sm text-muted">{c.emailLabel}</span>
               <input
                 value={form.email}
                 onChange={update('email')}
@@ -134,7 +130,7 @@ export default function Contact() {
             </label>
 
             <label className="flex flex-col gap-1.5">
-              <span className="text-sm text-muted">Message</span>
+              <span className="text-sm text-muted">{c.messageLabel}</span>
               <textarea
                 value={form.message}
                 onChange={update('message')}
@@ -153,12 +149,11 @@ export default function Contact() {
                 required
               />
               <span>
-                I have read the{' '}
+                {c.consentPrefix}
                 <button type="button" onClick={() => setShowPolicy((v) => !v)} className="underline text-text">
-                  privacy notice
-                </button>{' '}
-                and consent to Henna By Rachana using the details I provided to reply to my enquiry.
-                I can withdraw consent at any time by emailing the studio.
+                  {c.consentLink}
+                </button>
+                {c.consentSuffix}
               </span>
             </label>
 
@@ -169,40 +164,14 @@ export default function Contact() {
                 exit={{ opacity: 0, height: 0 }}
                 className="bg-bg border border-border rounded-xl p-4 text-sm text-muted leading-relaxed"
               >
-                <strong className="text-text block mb-1">Privacy notice (GDPR)</strong>
-                <p>
-                  <strong>Controller:</strong> Henna By Rachana, Amsterdam, NL - hennabyrachana@gmail.com.
-                </p>
-                <p className="mt-2">
-                  <strong>What we collect:</strong> the name, email and message you submit through this
-                  form, plus the timestamp of your consent.
-                </p>
-                <p className="mt-2">
-                  <strong>Why:</strong> only to reply to your enquiry and arrange your booking. Lawful
-                  basis: your consent (GDPR Art. 6(1)(a)).
-                </p>
-                <p className="mt-2">
-                  <strong>How the form works:</strong> on submit, your message is sent to our own
-                  small server hosted on DigitalOcean (EU region), which immediately relays it as an
-                  email to our Gmail inbox via Google's SMTP service. The server does not log
-                  the contents of your message and does not store it in any database. No analytics,
-                  cookies, or third-party trackers are used on this site.
-                </p>
-                <p className="mt-2">
-                  <strong>Sub-processors:</strong> DigitalOcean (hosting, EU region) and Google
-                  (Gmail SMTP and inbox storage) process your data on our behalf. Their own privacy
-                  policies apply.
-                </p>
-                <p className="mt-2">
-                  <strong>Retention:</strong> we keep correspondence only as long as needed to handle
-                  your booking and any follow-up, then delete it. We never share or sell your data.
-                </p>
-                <p className="mt-2">
-                  <strong>Your rights:</strong> access, rectification, erasure, restriction, objection,
-                  portability, and to lodge a complaint with the Autoriteit Persoonsgegevens. Email the
-                  studio at <strong>hennabyrachana@gmail.com</strong> to exercise any of these or to
-                  withdraw your consent at any time.
-                </p>
+                <strong className="text-text block mb-1">{c.privacyTitle}</strong>
+                <p><strong>{c.privacyController}</strong> {c.privacyControllerVal}</p>
+                <p className="mt-2"><strong>{c.privacyCollect}</strong> {c.privacyCollectVal}</p>
+                <p className="mt-2"><strong>{c.privacyWhy}</strong> {c.privacyWhyVal}</p>
+                <p className="mt-2"><strong>{c.privacyHow}</strong> {c.privacyHowVal}</p>
+                <p className="mt-2"><strong>{c.privacySub}</strong> {c.privacySubVal}</p>
+                <p className="mt-2"><strong>{c.privacyRetention}</strong> {c.privacyRetentionVal}</p>
+                <p className="mt-2"><strong>{c.privacyRights}</strong> {c.privacyRightsVal}</p>
               </motion.div>
             )}
 
@@ -212,10 +181,10 @@ export default function Contact() {
 
             <div className="flex flex-wrap gap-3 mt-2">
               <button type="submit" className="button" disabled={submitting} aria-busy={submitting}>
-                {submitting ? 'Sending...' : 'Send enquiry'}
+                {submitting ? c.sending : c.submitBtn}
               </button>
               <button type="button" onClick={onClear} className="button btn-alt" disabled={submitting}>
-                Clear form
+                {c.clearBtn}
               </button>
             </div>
           </motion.form>
@@ -227,21 +196,19 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="card p-6 md:p-7 flex flex-col gap-4"
           >
-            <h3 className="text-xl font-extrabold">Direct channels</h3>
-            <p className="text-muted m-0">Prefer a quick chat? Reach out directly:</p>
+            <h3 className="text-xl font-extrabold">{c.directTitle}</h3>
+            <p className="text-muted m-0">{c.directSubtitle}</p>
             <div className="flex flex-wrap gap-3">
-              <a className="button" href="https://instagram.com/henna.by.rachana" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a className="button btn-alt" href="https://wa.me/31649222922" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a className="button" href="https://instagram.com/henna.by.rachana" target="_blank" rel="noopener noreferrer">{c.igBtn}</a>
+              <a className="button btn-alt" href="https://wa.me/31649222922" target="_blank" rel="noopener noreferrer">{c.waBtn}</a>
             </div>
             <p className="text-muted text-sm m-0">
               Instagram: <strong className="text-text">@henna.by.rachana</strong><br />
               WhatsApp: <strong className="text-text">+31 64 922 2922</strong>
             </p>
-            <p className="text-muted text-xs leading-relaxed mt-2">
-              These links take you to third-party services (Meta, WhatsApp). Their own privacy policies apply once you leave this site.
-            </p>
+            <p className="text-muted text-xs leading-relaxed mt-2">{c.directDisclaimer}</p>
             <div className="border-t border-border pt-4 text-xs text-muted leading-relaxed space-y-0.5">
-              <p className="font-semibold text-text mb-1">Business details</p>
+              <p className="font-semibold text-text mb-1">{c.businessTitle}</p>
               <p>Henna By Rachana</p>
               <p>KVK 42110227</p>
               <p>Amsterdam, Netherlands</p>

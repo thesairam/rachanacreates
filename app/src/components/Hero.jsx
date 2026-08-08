@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
-const HEADLINE = 'Elegant Henna for Every Occasion'.split(' ')
 const heroImg = '/media/designs/bridal-henna-mehndi-rachana-amsterdam-netherlands.png'
 
 const navigate = (id) => {
@@ -11,6 +11,10 @@ const navigate = (id) => {
 }
 
 export default function Hero() {
+  const { t } = useLanguage()
+  const h = t.hero
+  const HEADLINE = h.headline.split(' ')
+
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-28 pb-20 px-6 md:px-10">
       <div className="container-x w-full grid md:grid-cols-12 gap-10 items-center">
@@ -21,7 +25,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-xs tracking-[0.3em] uppercase text-muted mb-5"
           >
-            Henna By Rachana · Amsterdam &amp; heel Nederland
+            {h.eyebrow}
           </motion.p>
 
           <h1 className="font-extrabold leading-[1.05] text-[clamp(34px,5.2vw,64px)]">
@@ -44,9 +48,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 + HEADLINE.length * 0.07 }}
             className="mt-6 text-lg md:text-xl text-muted max-w-xl leading-relaxed"
           >
-            Handcrafted henna made from 100% natural ingredients, inspired by tradition
-            and created to celebrate beauty, culture, and self-expression. Simple, safe,
-            and made with care.
+            {h.description}
           </motion.p>
 
           <motion.div
@@ -55,8 +57,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 + HEADLINE.length * 0.07 }}
             className="mt-8 flex flex-wrap gap-3"
           >
-            <button onClick={() => navigate('designs')} className="button">Explore Designs</button>
-            <button onClick={() => navigate('contact')} className="button btn-alt">Book Now</button>
+            <button onClick={() => navigate('designs')} className="button">{h.cta1}</button>
+            <button onClick={() => navigate('contact')} className="button btn-alt">{h.cta2}</button>
           </motion.div>
         </div>
 
