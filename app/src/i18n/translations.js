@@ -8,7 +8,7 @@ const en = {
   hero: {
     eyebrow: 'Henna By Rachana · Amsterdam & all of Netherlands',
     headline: 'Where Henna Meets High-Fashion',
-    description: 'For every occasion, bridal, festive, party and events. Natural henna crafted with 100% pure ingredients and 20 years of passion.',
+    description: 'Handcrafted henna made from 100% natural ingredients, inspired by tradition and created to celebrate beauty, culture, and self-expression. Simple, safe, and made with care. For every occasion: bridal, festive, party and events.',
     cta1: 'Explore Designs',
     cta2: 'Book Now',
   },
@@ -162,7 +162,7 @@ const nl = {
   hero: {
     eyebrow: 'Henna By Rachana · Amsterdam & heel Nederland',
     headline: 'Waar Henna High-Fashion Ontmoet',
-    description: 'Voor elke gelegenheid, bruidsmehndi, feesthenna, party en evenementen. Natuurlijke henna van 100% pure ingrediënten en 20 jaar passie.',
+    description: 'Handgemaakte henna van 100% natuurlijke ingrediënten, geïnspireerd op traditie en gemaakt om schoonheid, cultuur en zelfexpressie te vieren. Eenvoudig, veilig en met zorg gemaakt. Voor elke gelegenheid: bruidsmehndi, feesthenna, party en evenementen.',
     cta1: 'Bekijk Ontwerpen',
     cta2: 'Boek Nu',
   },
