@@ -2,8 +2,15 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
 
-const initial = { name: '', email: '', message: '', website: '', consent: false }
 const CONTACT_ENDPOINT = '/api/contact'
+const initial = { name: '', email: '', message: '', website: '', consent: false }
+
+const fade = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-60px' },
+  transition: { duration: 0.7, ease: [0.2, 0.65, 0.3, 1] }
+}
 
 export default function Contact() {
   const { t } = useLanguage()
@@ -21,138 +28,65 @@ export default function Contact() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    if (!form.consent) {
-      setStatus({ kind: 'error', msg: c.errorConsent })
-      return
-    }
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      setStatus({ kind: 'error', msg: c.errorFields })
-      return
-    }
+    if (!form.consent) { setStatus({ kind: 'error', msg: c.errorConsent }); return }
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) { setStatus({ kind: 'error', msg: c.errorFields }); return }
 
     setSubmitting(true)
     setStatus({ kind: 'idle', msg: '' })
-
     try {
       const res = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-          website: form.website,
-          consent_given_at: new Date().toISOString(),
-        }),
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: form.name, email: form.email, message: form.message, website: form.website, consent_given_at: new Date().toISOString() }),
       })
-
       const data = await res.json().catch(() => ({}))
-      if (res.ok && data.ok) {
-        setStatus({ kind: 'ok', msg: c.successMsg })
-        setForm(initial)
-      } else {
-        setStatus({ kind: 'error', msg: data?.error || c.errorNetwork })
-      }
-    } catch {
-      setStatus({ kind: 'error', msg: c.errorNetwork })
-    } finally {
-      setSubmitting(false)
-    }
+      if (res.ok && data.ok) { setStatus({ kind: 'ok', msg: c.successMsg }); setForm(initial) }
+      else setStatus({ kind: 'error', msg: data?.error || c.errorNetwork })
+    } catch { setStatus({ kind: 'error', msg: c.errorNetwork }) }
+    finally { setSubmitting(false) }
   }
 
-  const onClear = () => {
-    setForm(initial)
-    setStatus({ kind: 'idle', msg: '' })
-  }
+  const onClear = () => { setForm(initial); setStatus({ kind: 'idle', msg: '' }) }
 
   return (
-    <section id="contact" className="relative py-24 px-6 md:px-10">
+    <section id="contact" className="relative py-24 px-6 md:px-10 bg-bg2">
       <div className="container-x">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-extrabold mb-2"
-        >
-          {c.h2}
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-muted mb-8"
-        >
-          {c.subtitle}
-        </motion.p>
+        <motion.h2 {...fade} className="text-3xl md:text-4xl font-extrabold mb-2">{c.h2}</motion.h2>
+        <motion.p {...fade} transition={{ ...fade.transition, delay: 0.05 }} className="text-muted mb-8">{c.subtitle}</motion.p>
 
         <div className="grid md:grid-cols-2 gap-5">
           <motion.form
             onSubmit={onSubmit}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6 }}
+            {...fade}
+            transition={{ ...fade.transition, delay: 0.1 }}
             className="card p-6 md:p-7 flex flex-col gap-3"
             noValidate
           >
             {/* Honeypot */}
             <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
-              <label>
-                Website
-                <input type="text" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={update('website')} />
-              </label>
+              <label>Website<input type="text" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={update('website')} /></label>
             </div>
 
             <label className="flex flex-col gap-1.5">
               <span className="text-sm text-muted">{c.nameLabel}</span>
-              <input
-                value={form.name}
-                onChange={update('name')}
-                type="text"
-                autoComplete="name"
-                required
-                className="bg-bg border border-border rounded-xl px-3 py-2.5 text-text outline-none focus:border-accent"
-              />
+              <input value={form.name} onChange={update('name')} type="text" autoComplete="name" required className="bg-bg border border-border rounded-xl px-3 py-2.5 text-text outline-none focus:border-accent" />
             </label>
 
             <label className="flex flex-col gap-1.5">
               <span className="text-sm text-muted">{c.emailLabel}</span>
-              <input
-                value={form.email}
-                onChange={update('email')}
-                type="email"
-                autoComplete="email"
-                required
-                className="bg-bg border border-border rounded-xl px-3 py-2.5 text-text outline-none focus:border-accent"
-              />
+              <input value={form.email} onChange={update('email')} type="email" autoComplete="email" required className="bg-bg border border-border rounded-xl px-3 py-2.5 text-text outline-none focus:border-accent" />
             </label>
 
             <label className="flex flex-col gap-1.5">
               <span className="text-sm text-muted">{c.messageLabel}</span>
-              <textarea
-                value={form.message}
-                onChange={update('message')}
-                rows={5}
-                required
-                className="bg-bg border border-border rounded-xl px-3 py-2.5 text-text outline-none focus:border-accent resize-y"
-              />
+              <textarea value={form.message} onChange={update('message')} rows={5} required className="bg-bg border border-border rounded-xl px-3 py-2.5 text-text outline-none focus:border-accent resize-y" />
             </label>
 
             <label className="flex items-start gap-2.5 mt-1 text-sm text-muted leading-snug">
-              <input
-                type="checkbox"
-                checked={form.consent}
-                onChange={update('consent')}
-                className="mt-1 accent-accent"
-                required
-              />
+              <input type="checkbox" checked={form.consent} onChange={update('consent')} className="mt-1 accent-accent" required />
               <span>
                 {c.consentPrefix}
-                <button type="button" onClick={() => setShowPolicy((v) => !v)} className="underline text-text">
-                  {c.consentLink}
-                </button>
+                <button type="button" onClick={() => setShowPolicy((v) => !v)} className="underline text-text">{c.consentLink}</button>
                 {c.consentSuffix}
               </span>
             </label>
@@ -161,7 +95,6 @@ export default function Contact() {
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
                 className="bg-bg border border-border rounded-xl p-4 text-sm text-muted leading-relaxed"
               >
                 <strong className="text-text block mb-1">{c.privacyTitle}</strong>
@@ -183,19 +116,11 @@ export default function Contact() {
               <button type="submit" className="button" disabled={submitting} aria-busy={submitting}>
                 {submitting ? c.sending : c.submitBtn}
               </button>
-              <button type="button" onClick={onClear} className="button btn-alt" disabled={submitting}>
-                {c.clearBtn}
-              </button>
+              <button type="button" onClick={onClear} className="button btn-alt" disabled={submitting}>{c.clearBtn}</button>
             </div>
           </motion.form>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="card p-6 md:p-7 flex flex-col gap-4"
-          >
+          <motion.div {...fade} transition={{ ...fade.transition, delay: 0.15 }} className="card p-6 md:p-7 flex flex-col gap-4">
             <h3 className="text-xl font-extrabold">{c.directTitle}</h3>
             <p className="text-muted m-0">{c.directSubtitle}</p>
             <div className="flex flex-wrap gap-3">

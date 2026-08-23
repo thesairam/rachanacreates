@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 
-const navIds = ['home', 'designs', 'services', 'about']
+const navIds = ['home', 'designs', 'services', 'about', 'contact']
 
 const getActiveSection = () => window.location.pathname.slice(1) || 'home'
 

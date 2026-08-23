@@ -3,9 +3,11 @@ import { useLanguage } from '../context/LanguageContext'
 
 const items = [
   { url: '/media/designs/festive-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Festive henna mehndi design by Rachana, mehndi artist Netherlands', tag: 'Festive' },
-  { url: '/media/designs/traditional-indian-full-hand-bridal-mehndi-rachana-amsterdam-netherlands.png', alt: 'Traditional Indian full hand bridal mehndi by Rachana, henna artist Amsterdam Netherlands', tag: 'Traditional Indian' },
+  { url: '/media/designs/crystal-henna-gem-jewel-hand-body-art-rachana-amsterdam-netherlands.png', alt: 'Crystal henna gem jewel hand art by Rachana, Amsterdam Netherlands', tag: 'Crystal Henna' },
   { url: '/media/designs/luxury-full-arm-above-elbow-bridal-mehndi-rachana-amsterdam-netherlands.png', alt: 'Luxury full arm above elbow bridal mehndi by Rachana, Amsterdam Netherlands', tag: 'Luxury Bridal' },
   { url: '/media/designs/floral-rose-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Floral rose henna mehndi design by Rachana, henna artist Amsterdam Netherlands', tag: 'Floral' },
+  { url: '/media/designs/rainbow-crystal-henna-gem-jewel-hand-body-art-rachana-amsterdam-netherlands.png', alt: 'Rainbow crystal henna gem jewel hand art by Rachana, LGBTQ friendly Amsterdam Netherlands', tag: 'Crystal Henna' },
+  { url: '/media/designs/traditional-indian-full-hand-bridal-mehndi-rachana-amsterdam-netherlands.png', alt: 'Traditional Indian full hand bridal mehndi by Rachana, henna artist Amsterdam Netherlands', tag: 'Traditional Indian' },
   { url: '/media/designs/bridal-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Bridal mehndi design by Rachana, henna artist Amsterdam Netherlands', tag: 'Bridal' },
   { url: '/media/designs/geometric-indo-western-both-hands-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Geometric Indo-Western both hands henna mehndi by Rachana, Amsterdam Netherlands', tag: 'Indo-Western' },
   { url: '/media/designs/arabic-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Arabic henna mehndi design by Rachana, Amsterdam Netherlands', tag: 'Arabic' },
@@ -14,8 +16,6 @@ const items = [
   { url: '/media/designs/minimal-sunflower-finger-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Minimal sunflower finger henna mehndi design by Rachana, Amsterdam', tag: 'Minimal' },
   { url: '/media/designs/lotus-yinyang-dreamcatcher-arm-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Lotus yin-yang dreamcatcher arm henna design by Rachana, LGBTQ friendly henna Amsterdam', tag: 'Custom' },
   { url: '/media/designs/indo-western-henna-mehndi-rachana-amsterdam-netherlands.png', alt: 'Indo-western henna mehndi design by Rachana, Netherlands', tag: 'Indo-Western' },
-  { url: '/media/designs/crystal-gem-hand-jewel-body-art-rachana-amsterdam-netherlands.png', alt: 'Crystal gem hand jewel body art by Rachana, Amsterdam Netherlands', tag: 'Crystal Art' },
-  { url: '/media/designs/rainbow-crystal-gem-hand-jewel-body-art-rachana-amsterdam-netherlands.png', alt: 'Rainbow crystal gem hand jewel body art by Rachana, LGBTQ friendly Amsterdam Netherlands', tag: 'Crystal Art' },
 ]
 
 export default function DesignsScroll() {
